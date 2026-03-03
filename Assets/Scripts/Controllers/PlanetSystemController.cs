@@ -31,7 +31,7 @@ public class PlanetSystemController
   // Updates all planets' positions.
   void UpdatePlanets(DateTime time)
   {
-    Debug.Log("[TIME] Updating planets " + time);
+    // Debug.Log("[TIME] Updating planets " + time);
 
     foreach (var planet in planets)
     {
