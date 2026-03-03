@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlanetEphemerisService : IPlanetEphemerisService
 {
-  public Vector3 GetPlanetPosition(PlanetData.Planet planet, DateTime date)
+  public Vector3 GetPlanetPosition(PlanetData.Planet planet, DateTime time)
   {
-    return PlanetData.GetPlanetPosition(planet, date);
+    return PlanetData.GetPlanetPosition(planet, time);
   }
 }

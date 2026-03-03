@@ -8,6 +8,7 @@ public class AppBootstrapper : MonoBehaviour
   public PlanetView[] planets;
 
   TimeModel timeModel;
+  TimeController timeController;
   PlanetSystemController controller;
 
   void Start()
@@ -15,6 +16,7 @@ public class AppBootstrapper : MonoBehaviour
     Debug.Log("[BOOT] Initializing application");
 
     timeModel = new TimeModel();
+    timeController = new TimeController();
 
     var ephemeris = new PlanetEphemerisService();
 
@@ -24,6 +26,7 @@ public class AppBootstrapper : MonoBehaviour
       planets
     );
 
-    timeModel.SetTime(DateTime.Now);
+    // timeModel.SetTime(DateTime.Now); // Executed by timeController.
+    timeController.Init(timeModel);
   }
 }
