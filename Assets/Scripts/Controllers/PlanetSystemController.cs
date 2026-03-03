@@ -7,15 +7,23 @@ public class PlanetSystemController
   IPlanetEphemerisService ephemeris;
 
   PlanetView[] planets;
+  float distanceScale;
 
   public PlanetSystemController(
     TimeModel timeModel,
     IPlanetEphemerisService ephemeris,
-    PlanetView[] planets)
+    PlanetView[] planets,
+    SolarSystemConfig config)
   {
     this.timeModel = timeModel;
     this.ephemeris = ephemeris;
     this.planets = planets;
+
+    foreach (var planet in this.planets)
+    {
+      planet.SetScale(config.planetSizeScale);
+    }
+    this.distanceScale = config.distanceScale;
 
     timeModel.OnTimeChanged += UpdatePlanets;
   }
@@ -27,7 +35,7 @@ public class PlanetSystemController
 
     foreach (var planet in planets)
     {
-      Vector3 pos = ephemeris.GetPlanetPosition(planet.planet, time);
+      Vector3 pos = distanceScale * ephemeris.GetPlanetPosition(planet.planet, time);
       planet.SetPosition(pos);
     }
   }

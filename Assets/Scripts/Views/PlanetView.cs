@@ -8,4 +8,9 @@ public class PlanetView : MonoBehaviour
   {
     transform.localPosition = pos;
   }
+
+  public void SetScale(float scale)
+  {
+    transform.localScale = new(scale, scale, scale);
+  }
 }

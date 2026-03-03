@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(TimeController))]
 public class AppBootstrapper : MonoBehaviour
 {
   public SolarSystemConfig config;
@@ -16,14 +17,15 @@ public class AppBootstrapper : MonoBehaviour
     Debug.Log("[BOOT] Initializing application");
 
     timeModel = new TimeModel();
-    timeController = new TimeController();
+    timeController = GetComponent<TimeController>();
 
     var ephemeris = new PlanetEphemerisService();
 
     controller = new PlanetSystemController(
       timeModel,
       ephemeris,
-      planets
+      planets,
+      config
     );
 
     // timeModel.SetTime(DateTime.Now); // Executed by timeController.

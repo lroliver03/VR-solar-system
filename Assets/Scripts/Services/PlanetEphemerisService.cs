@@ -5,6 +5,6 @@ public class PlanetEphemerisService : IPlanetEphemerisService
 {
   public Vector3 GetPlanetPosition(PlanetData.Planet planet, DateTime time)
   {
-    return PlanetData.GetPlanetPosition(planet, time);
+    return PlanetData.GetPlanetPosition(planet, time) ;
   }
 }
