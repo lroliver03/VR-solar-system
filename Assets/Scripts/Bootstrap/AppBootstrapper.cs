@@ -10,7 +10,6 @@ public class AppBootstrapper : MonoBehaviour
 
   public GameObject solarSystemRoot;
   public PlanetView[] planetViews;
-  public PlanetSelectable[] planetSelectables;
 
   TimeModel timeModel;
   TimeController timeController;
@@ -18,25 +17,27 @@ public class AppBootstrapper : MonoBehaviour
   ScaleController scaleController;
   FocusController focusController;
 
+  private Vector3 initialSolarSystemRootPos;
+  private Quaternion initialSolarSystemRootRot;
+
   void Start()
   {
     Debug.Log("[BOOT] Initializing application");
 
     if (config == null)
     {
-      Debug.LogError("[BOOT] Missing SolarSystemConfig! Check inspector");
+      Debug.LogError("[BOOT/ERROR] Missing SolarSystemConfig! Check inspector");
       return;
     }
     if (planetViews == null || planetViews.Length == 0)
     {
-      Debug.LogError("[BOOT] Missing PlanetViews! Check inspector");
+      Debug.LogError("[BOOT/ERROR] Missing PlanetViews! Check inspector");
       return;
     }
-    if (planetSelectables == null || planetSelectables.Length == 0)
-    {
-      Debug.LogError("[BOOT] Missing PlanetSelectables! Check inspector");
-      return;
-    }
+
+    // Getting initial position and rotation
+    initialSolarSystemRootPos = solarSystemRoot.transform.position;
+    initialSolarSystemRootRot = solarSystemRoot.transform.rotation;
 
     // Instantiating models and services
     timeModel = new TimeModel();
@@ -67,5 +68,21 @@ public class AppBootstrapper : MonoBehaviour
 
     // Creating Focus Controller
     focusController = GetComponent<FocusController>();
+  }
+
+  public void ResetView()
+  {
+    solarSystemRoot.transform.SetPositionAndRotation(initialSolarSystemRootPos, initialSolarSystemRootRot);
+    Debug.Log("[APP] Reset system position and rotation");
+  }
+
+  public void ResetScale()
+  {
+    scaleController.ResetScale();
+  }
+
+  public void ResetTime()
+  {
+    timeController.ResetTime();
   }
 }

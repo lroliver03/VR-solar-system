@@ -27,13 +27,13 @@ public class PlanetSystemController
 
     timeModel.OnTimeChanged += UpdatePlanets;
 
-    Debug.Log("[INFO] PlanetSystemController initialised");
+    Debug.Log("[PLANET] PlanetSystemController initialised");
   }
 
   // Updates all planets' positions.
   void UpdatePlanets(DateTime time)
   {
-    // Debug.Log("[TIME] Updating planets " + time);
+    // Debug.Log("[PLANET] Updating planets " + time);
 
     foreach (var planet in planets)
     {

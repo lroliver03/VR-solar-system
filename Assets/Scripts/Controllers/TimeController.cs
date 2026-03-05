@@ -14,7 +14,34 @@ public class TimeController : MonoBehaviour
     now = DateTime.Now;
     timeModel.SetTime(now);
 
-    Debug.Log("[INFO] TimeController initialised");
+    Debug.Log("[TIME] TimeController initialised");
+  }
+
+  public void SetPlaying(bool playing)
+  {
+    if (playing)
+    {
+      Debug.Log("[TIME] Resumed time");
+      timeModel.Play();
+    }
+    else
+    {
+      Debug.Log("[TIME] Paused time");
+      timeModel.Pause();
+    }
+  }
+
+  public void ResetTime()
+  {
+    now = DateTime.Now;
+    timeModel.SetTime(now);
+    Debug.Log("[TIME] Reset time");
+  }
+
+  public void SetTimeScale(float scale)
+  {
+    timeModel.SetScale(scale);
+    Debug.Log($"[TIME] Set time scale {scale}");
   }
 
   void Update()
@@ -22,7 +49,7 @@ public class TimeController : MonoBehaviour
     if (!timeModel.IsPlaying)
       return;
 
-    now = now.AddDays(Time.deltaTime * secondsPerDay);
+    now = now.AddDays(Time.deltaTime * secondsPerDay * timeModel.TimeScale);
     timeModel.SetTime(now);
   }
 }
