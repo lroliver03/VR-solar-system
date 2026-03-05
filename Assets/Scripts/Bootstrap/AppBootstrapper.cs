@@ -1,18 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TimeController))]
+[RequireComponent(typeof(FocusController))]
 public class AppBootstrapper : MonoBehaviour
 {
   public SolarSystemConfig config;
 
   public GameObject solarSystemRoot;
-  public PlanetView[] planets;
+  public PlanetView[] planetViews;
+  public PlanetSelectable[] planetSelectables;
 
   TimeModel timeModel;
   TimeController timeController;
   PlanetSystemController planetSystemController;
   ScaleController scaleController;
+  FocusController focusController;
 
   void Start()
   {
@@ -23,9 +27,14 @@ public class AppBootstrapper : MonoBehaviour
       Debug.LogError("[BOOT] Missing SolarSystemConfig! Check inspector");
       return;
     }
-    if (planets == null || planets.Length == 0)
+    if (planetViews == null || planetViews.Length == 0)
     {
-      Debug.LogError("[BOOT] Missing Planets/PlanetViews! Check inspector");
+      Debug.LogError("[BOOT] Missing PlanetViews! Check inspector");
+      return;
+    }
+    if (planetSelectables == null || planetSelectables.Length == 0)
+    {
+      Debug.LogError("[BOOT] Missing PlanetSelectables! Check inspector");
       return;
     }
 
@@ -37,7 +46,7 @@ public class AppBootstrapper : MonoBehaviour
     planetSystemController = new PlanetSystemController(
       timeModel,
       ephemeris,
-      planets,
+      planetViews,
       config
     );
     
@@ -55,5 +64,8 @@ public class AppBootstrapper : MonoBehaviour
     );
     
     solarSystemRoot.GetComponent<ScaleActionHandler>().Init(scaleController);
+
+    // Creating Focus Controller
+    focusController = GetComponent<FocusController>();
   }
 }

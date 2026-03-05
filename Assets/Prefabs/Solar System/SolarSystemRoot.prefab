@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6342721901224389518}
-  - component: {fileID: 4804053455073966673}
   - component: {fileID: 7036713054387709724}
   m_Layer: 0
   m_Name: SolarSystemRoot
@@ -35,44 +34,6 @@ Transform:
   - {fileID: 4423307892623089680}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4804053455073966673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410720438037703396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fcc834fb4a752545a77ac6ebea7c5df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScaleActionHandler
-  incrementScale:
-    m_Name: Increment Scale
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: be81f131-2c02-4624-b384-16c1e9895fad
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: d5e686bc-cac3-4f2f-9ecb-0bea53439043
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Increment Scale
-      m_Flags: 0
-    m_Flags: 0
-  decrementScale:
-    m_Name: Decrement Scale
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2e2a82d4-1ad2-4874-8431-c2636259b43f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &7036713054387709724
 MonoBehaviour:
   m_ObjectHideFlags: 0
