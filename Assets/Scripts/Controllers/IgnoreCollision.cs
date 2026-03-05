@@ -7,9 +7,7 @@ public class IgnoreCollision : MonoBehaviour
 
   void Start()
   {
-    Collider ignoredObjectCollider = ignoredObject.GetComponent<Collider>();
-
-    if (ignoredObjectCollider == null)
+    if (!ignoredObject.TryGetComponent<Collider>(out var ignoredObjectCollider))
     {
       Debug.LogError("[IgnoreCollision] This IgnoreCollision component is invalid! Delete it or change the ignored object to something with a collider!");
       return;

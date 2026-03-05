@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SolarSystemConfig
   distanceScale: 5
   planetSizeScale: 1
+  minimumScale: 0.1
+  maximumScale: 3
+  scaleStep: 0.5
   showOrbits: 1

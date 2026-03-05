@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlanetSystemController
 {
-  TimeModel timeModel;
-  IPlanetEphemerisService ephemeris;
+  readonly TimeModel timeModel;
+  readonly IPlanetEphemerisService ephemeris;
 
-  PlanetView[] planets;
-  float distanceScale;
+  readonly PlanetView[] planets;
+  readonly float distanceScale;
 
   public PlanetSystemController(
     TimeModel timeModel,
@@ -26,6 +26,8 @@ public class PlanetSystemController
     this.distanceScale = config.distanceScale;
 
     timeModel.OnTimeChanged += UpdatePlanets;
+
+    Debug.Log("[INFO] PlanetSystemController initialised");
   }
 
   // Updates all planets' positions.

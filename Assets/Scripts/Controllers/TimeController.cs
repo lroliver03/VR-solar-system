@@ -13,6 +13,8 @@ public class TimeController : MonoBehaviour
     timeModel = model;
     now = DateTime.Now;
     timeModel.SetTime(now);
+
+    Debug.Log("[INFO] TimeController initialised");
   }
 
   void Update()

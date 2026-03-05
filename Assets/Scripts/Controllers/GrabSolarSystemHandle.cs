@@ -31,6 +31,8 @@ public class GrabObjectHandle : XRGrabInteractable
     // Get local offsets.
     localPositionOffset = interactorTransform.InverseTransformPoint(targetObject.position);
     localRotationOffset = Quaternion.Inverse(interactorTransform.rotation) * targetObject.rotation;
+
+    Debug.Log("[XR] Solar System Handle grabbed");
   }
 
   protected override void OnSelectExited(SelectExitEventArgs args)
@@ -39,6 +41,8 @@ public class GrabObjectHandle : XRGrabInteractable
 
     if (targetObject == null)
       return;
+
+    Debug.Log("[XR] Solar System Handle released");
   }
 
   public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
