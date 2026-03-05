@@ -24,11 +24,21 @@ public class GrabObjectHandle : XRGrabInteractable
     if (targetObject == null)
       return;
 
+    // Get attach transform.
     IXRSelectInteractor interactor = args.interactorObject;
-    Transform interactorTransform = interactor.GetAttachTransform(this); //
+    Transform interactorTransform = interactor.GetAttachTransform(this);
 
+    // Get local offsets.
     localPositionOffset = interactorTransform.InverseTransformPoint(targetObject.position);
     localRotationOffset = Quaternion.Inverse(interactorTransform.rotation) * targetObject.rotation;
+  }
+
+  protected override void OnSelectExited(SelectExitEventArgs args)
+  {
+    base.OnSelectExited(args);
+
+    if (targetObject == null)
+      return;
   }
 
   public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
