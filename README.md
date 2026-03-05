@@ -8,6 +8,8 @@ This project is a VR solar system workbench implemented in Unity, using C# and t
 ![](Screenshots/debug.png)
 *Screenshot of the debug panel*
 
+![](Schemes/architecture_scheme.png)
+
 ## GitHub Link
 
 https://github.com/lroliver03/VR-solar-system
