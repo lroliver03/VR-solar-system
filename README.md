@@ -11,8 +11,3 @@ This project is a VR solar system workbench implemented in Unity, using C# and t
 ## GitHub Link
 
 https://github.com/lroliver03/VR-solar-system
-
-## TODO
-
-- Scheme of TimeModel -> Controller -> PlanetView
-- Schemes of architecture
